@@ -1,6 +1,8 @@
 package OOP_sem2.dz.data;
 
-public abstract class User {
+import OOP_sem2.dz.util.StudyGrupIterator;
+
+public abstract class User extends StudyGrupIterator {
         private String name;
         private String birthday;
 
@@ -19,4 +21,6 @@ public abstract class User {
         public void setBirthday(String birthday) {
             this.birthday = birthday;
         }
+
+
 }

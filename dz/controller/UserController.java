@@ -9,4 +9,6 @@ public interface UserController {
     void create(String name, String birthday, String info);
     OOP_sem2.dz.data.User get();
     List<User> getAll();
+
+
 }

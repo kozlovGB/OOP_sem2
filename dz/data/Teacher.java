@@ -3,7 +3,7 @@ package OOP_sem2.dz.data;
 public class Teacher extends User {
     private String disciplesTaught;
 
-    public Teacher(String disciplesTaught, String name, String birthday) {
+    public Teacher(String name, String birthday, String disciplesTaught) {
         super.setName(name);
         super.setBirthday(birthday);
         this.disciplesTaught = disciplesTaught;

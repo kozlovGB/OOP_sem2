@@ -1,18 +1,21 @@
 package OOP_sem2.dz.data;
 
+import OOP_sem2.dz.util.StudyGrupIterator;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudyGroup {
-    private Teacher groupTeacher;
-    private List<Student> studentsList;
+public class StudyGroup extends StudyGrupIterator {
+    protected Teacher groupTeacher;
+    protected List<User> studentsList;
 
-    public StudyGroup(Teacher groupTeacher, List<Student> studentsList) {
+    public StudyGroup(Teacher groupTeacher, List<User> studentsList) {
         this.groupTeacher = groupTeacher;
         this.studentsList = studentsList;
     }
 
     public StudyGroup(Teacher groupTeacher) {
+
         this(groupTeacher,new ArrayList<>());
     }
 
@@ -41,7 +44,7 @@ public class StudyGroup {
         return groupTeacher;
     }
 
-    public List<Student> getStudentsList() {
+    public List<User> getStudentsList() {
         return studentsList;
     }
 
@@ -50,5 +53,18 @@ public class StudyGroup {
         return "StudyGroup{" + groupTeacher +
                 ", Students=" + studentsList +
                 '}';
+    }
+
+    @Override
+    public boolean hasNext() {
+        return (super.userId < studentsList.size());
+
+    }
+
+    @Override
+    public User next() {
+        super.userId++;
+        System.out.println(userId);
+        return studentsList.get(super.userId);
     }
 }
