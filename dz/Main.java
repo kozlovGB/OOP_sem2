@@ -4,9 +4,7 @@ import OOP_sem2.dz.controller.StudentControllerImpl;
 import OOP_sem2.dz.controller.StudyGroupControllerImpl;
 import OOP_sem2.dz.controller.TeacherControllerImpl;
 import OOP_sem2.dz.data.User;
-import OOP_sem2.dz.util.Flow;
-import OOP_sem2.dz.util.ReaderFromTxt;
-import OOP_sem2.dz.util.WriterToTxt;
+import OOP_sem2.dz.util.*;
 import OOP_sem2.dz.data.StudyGroup;
 
 import java.util.Iterator;
@@ -28,6 +26,7 @@ import java.util.logging.Logger;
             teacherController1.create("Иван", "20.06.1984","Математика");
             StudyGroupControllerImpl studyGroupController1 = new StudyGroupControllerImpl();
             studyGroupController1.create(teacherController1.get(),studentController1.getAll());
+            studentController1.clean();
             StudentControllerImpl studentController2 = new StudentControllerImpl();
             studentController2.create("Иван", "20.06.2001","01");
             studentController2.create("Петя", "20.08.2001","04");
@@ -38,19 +37,41 @@ import java.util.logging.Logger;
             StudyGroupControllerImpl studyGroupController2 = new StudyGroupControllerImpl();
             studyGroupController2.create(teacherController2.get(),studentController2.getAll());
 
-            Flow flow = new Flow();
-            flow.addFlow(studyGroupController1.get());
-            flow.addFlow(studyGroupController2.get());
-            System.out.println(flow.toString());
+
+
+
+            Flow flow1 = new Flow();
+            flow1.addFlow(studyGroupController1.get());
+            flow1.addFlow(studyGroupController2.get());
+            //System.out.println(flow1.toString());
+            Flow flow2 = new Flow();
+            teacherController2.create("Иван", "20.06.1984","Матем");
+            studyGroupController2.create(teacherController2.get(),studentController2.getAll());
+            flow2.addFlow(studyGroupController2.get());
+            StreamComparator streamComparator1 = new StreamComparator();
+            streamComparator1.addFlows(flow2);
+            streamComparator1.addFlows(flow1);
+            //System.out.println(streamComparator1.toString());
+            //System.out.println(streamComparator1.searhMin());
+            //System.out.println(streamComparator1.toString());
+            FlowServis flowServis = new FlowServis();
+            System.out.println(flowServis);
+            flowServis.addFlows(flow1);
+            System.out.println(flowServis);
+            flowServis.addFlows(flow2);
+            System.out.println(flowServis);
+            System.out.println(flowServis.flowsArrange());
+            //System.out.println(flowServis);
+
 
             //var s = (studyGroupController.get());
             //System.out.println(s);
             //WriterToTxt.write(studentController.getAll(),"text");
             //logger.info(ReaderFromTxt.read("text").toString());
 
-            while (flow.hasNext()){
-
-                System.out.println(flow.next());
-            }
+//            while (flow1.hasNext()){
+//
+//                System.out.println(flow1.next());
+//            }
         }
     }

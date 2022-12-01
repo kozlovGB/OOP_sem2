@@ -31,4 +31,8 @@ public class Flow implements Iterator<StudyGroup> {
     public StudyGroup next() {
         return groupList.get(index++);
     }
+
+    public int size() {
+        return groupList.size();
+    }
 }

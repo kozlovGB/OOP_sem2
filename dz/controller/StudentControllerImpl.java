@@ -10,6 +10,9 @@ import java.util.Stack;
 
 public class StudentControllerImpl extends StudyGrupIterator implements UserController {
     private static Stack<Student> studentStack = new Stack<>();
+    static {
+        studentStack = new Stack<>();
+    }
 
     @Override
     public void create(String name, String birthday, String info) {
@@ -28,6 +31,10 @@ public class StudentControllerImpl extends StudyGrupIterator implements UserCont
     public List<User> getAll() {
         return new ArrayList<>(studentStack);
     }
-
+    public void clean() {
+        while (!studentStack.isEmpty()) {
+            studentStack.pop();
+        }
+    }
 
 }
